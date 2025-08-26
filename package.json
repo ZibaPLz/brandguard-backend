@@ -1,11 +1,10 @@
 {
   "name": "brandguard-backend",
-  "version": "1.0.0",
+  "version": "0.2.0",
   "type": "module",
-  
+  "main": "src/index.js",
   "scripts": {
-    "start": "node src/index.js",
-    "postinstall": "npx playwright install --with-deps chromium"
+    "start": "node src/index.js"
   },
   "dependencies": {
     "cors": "^2.8.5",

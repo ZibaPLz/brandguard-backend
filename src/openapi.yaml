@@ -3,10 +3,10 @@ info:
   title: BrandGuardian Playwright API
   version: 1.0.0
 servers:
-  - url: https://ded90d235bf7.ngrok-free.app   # <--- usa tu URL pública
+  - url: https://brandguard-backend-production.up.railway.app/   # <--- usa tu URL pública
 
 paths:
-  /health:
+  /v1/health:
     get:
       summary: Revisa si el servidor está vivo
       responses:
@@ -20,12 +20,12 @@ paths:
                   ok:
                     type: boolean
 
-  /screenshot:
+  /v1/screenshot:
     post:
       summary: Toma una captura de pantalla de una URL
       requestBody:
         required: true
-        content:
+        content:‹‹
           application/json:
             schema:
               type: object
@@ -44,7 +44,7 @@ paths:
                   title: { type: string }
                   image_base64: { type: string }
 
-  /analyze:
+  /v1/analyze:
     post:
       summary: Analiza tipografías e imágenes distorsionadas
       requestBody:
