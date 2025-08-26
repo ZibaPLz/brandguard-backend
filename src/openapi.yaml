@@ -1,0 +1,72 @@
+openapi: 3.0.3
+info:
+  title: BrandGuardian Playwright API
+  version: 1.0.0
+servers:
+  - url: https://ded90d235bf7.ngrok-free.app   # <--- usa tu URL pública
+
+paths:
+  /health:
+    get:
+      summary: Revisa si el servidor está vivo
+      responses:
+        '200':
+          description: ok
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ok:
+                    type: boolean
+
+  /screenshot:
+    post:
+      summary: Toma una captura de pantalla de una URL
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                url: { type: string }
+                fullPage: { type: boolean }
+      responses:
+        '200':
+          description: Captura en base64
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ok: { type: boolean }
+                  title: { type: string }
+                  image_base64: { type: string }
+
+  /analyze:
+    post:
+      summary: Analiza tipografías e imágenes distorsionadas
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                target:
+                  type: object
+                  properties:
+                    type: { type: string }
+                    value: { type: string }
+      responses:
+        '200':
+          description: Resultado de análisis
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  score: { type: integer }
+                  findings: { type: array }
+                  meta: { type: object }
